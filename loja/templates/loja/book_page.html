@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon"
+    href="..\..\..\media\favicon.ico">
+    <title>{{livro.titulo}} | Django BookStore</title>
+</head>
+<body>
+    <h1>
+        Django Bookstore
+    </h1>
+    <h2>
+        {{livro.titulo}}
+    </h2>
+    {% if livro.image == "" and livro.image2 == "" and livro.image3 == ""%}
+        <img src="..\..\..\media\no_pic.png">
+    {% endif %}
+    {% if livro.image != "" %}
+        <img src="{{ livro.image.url }}">
+    {% endif %}
+    {% if livro.image2 != "" %}
+        <img src="{{ livro.image2.url }}">
+    {% endif %}
+    {% if livro.image3 != "" %}
+        <img src="{{ livro.image3.url }}">
+    {% endif %}
+    <a href="{% url 'url_comprar' livro.id %}">Comprar</a>
+    <br>
+    <b>Titulo</b> - {{ livro.titulo }}<br>
+    <b>Autor</b> - {{ livro.autor }}<br>
+    <b>Editora</b> - {{ livro.editora }}<br>
+    <b>Genero</b> - {{ livro.genero }}<br>
+    <b>Preço</b> - R$ {{ livro.preço }}
+    <br>
+    <h3>
+        Sinopse
+    </h3>
+    {{livro.sinopse}}
+</body>
+</html>
