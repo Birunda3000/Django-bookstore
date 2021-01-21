@@ -2,48 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="17cf8dca-1490-4db8-8a39-43429e3ca465" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/APS RASCUNHO.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/django_bookstore/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/django_bookstore/asgi.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/django_bookstore/settings.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/django_bookstore/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/django_bookstore/wsgi.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loja/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loja/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loja/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loja/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loja/migrations/0002_editora_livro.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loja/migrations/0003_auto_20210113_0303.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loja/migrations/0004_auto_20210113_0305.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loja/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loja/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loja/templates/loja/book_page.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loja/templates/loja/compra.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loja/templates/loja/home.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loja/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loja/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Chanut-Role-Playing-Treant-Tree.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/django.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/em construção.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/no_pic.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/peroba.jfif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/products/31-zoe9x54L._SX352_BO1204203200_.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/products/Download-livro-A-Vida-Como-Ela-e-Nelson-Rodrigues-em-ePUB-mobi-e-PDF.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/products/Download-livro-A-Vida-Como-Ela-e-Nelson-Rodrigues-em-ePUB-mobi-e-PDF_BwWlt09.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/products/Fundacaobox_frente_alta.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/products/download_2_ZRF8b24.jfif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/products/download_3_voSkdNm.jfif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/products/download_4_5KyPK8X.jfif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/products/download_5_ENPBioc.jfif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/products/download_6.jfif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/products/download_6_6nZcnKd.jfif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_bookstore/django_bookstore/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_bookstore/django_bookstore/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_bookstore/loja/templates/loja/book_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/django_bookstore/loja/templates/loja/book_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_bookstore/loja/templates/loja/compra.html" beforeDir="false" afterPath="$PROJECT_DIR$/django_bookstore/loja/templates/loja/compra.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_bookstore/loja/templates/loja/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/django_bookstore/loja/templates/loja/home.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

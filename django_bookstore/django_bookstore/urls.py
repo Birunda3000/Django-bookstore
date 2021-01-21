@@ -23,7 +23,7 @@ from django_bookstore import settings#***********
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', home),
+    path('home/', home, name='url_home'),
     path("book_page/<int:pk>/", book_page, name='url_book'),
     path("compra/<int:pk>/", compra, name='url_comprar')
 ] + static(settings.MEDIA_URL , document_root=settings.MEDIA_ROOT)   #depois do +

@@ -2,14 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="shortcut icon"
-    href="..\..\..\media\favicon.ico">
+    <link rel="shortcut icon" href = "..\..\..\media\favicon.ico">
     <title>Django BookStore</title>
 </head>
 <body>
     <img src="..\..\..\media\django.png">
-    <h1>Bem vindo a Django BookStore</h1>
-    <h2>Novos lançamentos</h2>
+    <a href="{% url 'url_home'%}">Django</a>
+    <h1>
+    Bem vindo a Django BookStore
+    </h1>
+    <h2>
+        Novos lançamentos
+    </h2>
     <ul>
     {% for livro in livros %}
 
@@ -36,6 +40,5 @@
 
     {% endfor %}
     </ul>
-
 </body>
 </html>
