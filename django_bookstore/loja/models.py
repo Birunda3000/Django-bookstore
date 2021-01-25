@@ -1,4 +1,9 @@
 from django.db import models
+from django.core.exceptions import ValidationError
+
+def validate_interval(value):
+    if value < 0:
+        raise ValidationError('Preço não poe ser menor que zero')
 
 # Create your models here.
 
@@ -30,7 +35,7 @@ class Livro(models.Model):
     sinopse = models.TextField(null=True, blank=True)
     data_criação = models.DateTimeField(auto_now_add=True)
 
-    preço = models.DecimalField(decimal_places=2, max_digits=9)
+    preço = models.DecimalField(decimal_places=2, max_digits=9,validators=[validate_interval])
     image = models.FileField(upload_to='products/', null=True, blank=True)
     image2 = models.FileField(upload_to='products/', null=True, blank=True)
     image3 = models.FileField(upload_to='products/', null=True, blank=True)
