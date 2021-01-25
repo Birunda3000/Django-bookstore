@@ -24,18 +24,18 @@
             <img src="{{ livro.image.url }}">
         {% endif %}
 
-        {% if livro.image2 != "" %}
+        {% if livro.image2 != "" and livro.image == ""%}
             <img src="{{ livro.image2.url }}">
         {% endif %}
 
-        {% if livro.image3 != "" %}
+        {% if livro.image3 != "" and livro.image == "" and livro.image2 == ""%}
             <img src="{{ livro.image3.url }}">
         {% endif %}
 
         <a href="{% url 'url_book' livro.id %}">
 
         <li> {{ livro.titulo }}</a>  - {{ livro.autor }}
-        <br> {{ livro.editora }} - {{ livro.genero }} <br> R$ {{ livro.preço }}</li>
+        <br> R$ {{ livro.preço }}</li>
 
     {% endfor %}
     </ul>
