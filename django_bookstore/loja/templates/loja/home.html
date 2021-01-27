@@ -1,43 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <link rel="shortcut icon" href = "..\..\..\media\favicon.ico"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static './home.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Coda+Caption:wght@800&display=swap" rel="stylesheet">
     <title>Django BookStore</title>
 </head>
 <body>
+    <div class="header">
     <img src="..\..\..\media\django.png">
-    <h1>
-    Bem vindo a
-    <a href="{% url 'url_home'%}">Django BookStore</h1></a>
-    <h2>
+    <h1 class="titulo">Bem vindo a <a class="link_titulo mask morpheus-den-gradient" href="{% url 'url_home'%}">Django BookStore</a></h1>
+    </div>
+
+    
+<div>
+    <h2 class="lancamentos">
         Novos lançamentos
     </h2>
-    <ul>
+    <ul class="wrapper">
     {% for livro in livros %}
-
+    <li class="box">
         {% if livro.image == "" and livro.image2 == "" and livro.image3 == ""%}
-            <img src="..\..\..\media\no_pic.png">
+            <img class="img_box" src="..\..\..\media\no_pic.png">
         {% endif %}
 
         {% if livro.image != "" %}
-            <img src="{{ livro.image.url }}">
+            <img class="img_box" src="{{ livro.image.url }}">
         {% endif %}
 
         {% if livro.image2 != "" and livro.image == ""%}
-            <img src="{{ livro.image2.url }}">
+            <img class="img_box" src="{{ livro.image2.url }}">
         {% endif %}
 
         {% if livro.image3 != "" and livro.image == "" and livro.image2 == ""%}
-            <img src="{{ livro.image3.url }}">
+            <img class="img_box" src="{{ livro.image3.url }}">
         {% endif %}
 
         <a href="{% url 'url_book' livro.id %}">
 
-        <li> {{ livro.titulo }}</a>  - {{ livro.autor }}
-        <br> R$ {{ livro.preço }}</li>
+         {{ livro.titulo }}</a>{{ livro.autor }}
+        <br> R$ {{ livro.preço }}
+    </li>
 
     {% endfor %}
     </ul>
+</div>
 </body>
 </html>

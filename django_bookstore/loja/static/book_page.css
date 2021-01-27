@@ -1,0 +1,11 @@
+.titulo {
+    color: black;
+    text-align: center;
+}
+.titulo:hover{
+    color: firebrick;
+}
+
+a:hover {
+    text-decoration: none;
+}

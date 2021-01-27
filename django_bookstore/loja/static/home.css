@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body, #root { 
+    height : 100vh;
+}
+
+body{
+    background: -webkit-linear-gradient(rgb(41, 37, 37),rgb(255, 6, 6));
+}
+img {
+    min-width: 15%;
+    max-width: 15%;
+}
+li{
+    list-style: none;
+}
+.header{
+    background-color: black;
+    display: inline;
+    justify-content: center;
+    font-size: 2.3rem;
+}
+.titulo{
+    font-size: 2.7rem;
+    color:rgb(202, 37, 37);
+    display: inline;
+    white-space: nowrap;
+    padding-left: 14%;
+    font-family:'Coda Caption', sans-serif; /*'Special Elite', cursive;*/
+}
+.link_titulo{
+    color: rgb(202, 37, 37);
+}
+.wrapper {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 20rem repeat(auto-fill, 20rem);
+    background-color:rgb(255, 255, 255);
+    padding-left: 10px;
+    padding-right: 20px;
+    grid-gap: 10px;
+    color: #444;
+    overflow: hidden;
+  }
+  
+  .box {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    color: black;
+    border-style: groove;
+    border-radius: 5px;
+    border-width: 1rem;
+    border-color: rgb(117, 61, 61);
+    padding: 20px;
+    font-size: 1.2rem;
+  }
+
+  .lancamentos{
+      color:black;
+      background-color: rgb(255, 255, 255);
+      text-align: center;
+      text-decoration: underline;
+      font-family: 'Coda Caption', sans-serif;
+      margin-bottom: 0px;
+      margin-top: 3%;
+      padding-top: 3%;
+      padding-bottom: 2%;
+  }
+  a:hover{
+      text-decoration: none;
+      background: -webkit-linear-gradient(rgb(41, 37, 37),rgb(226, 37, 37));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+  }
+
+  .img_box{
+      min-width: 30%;
+  }
