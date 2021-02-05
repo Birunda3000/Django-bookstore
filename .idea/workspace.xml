@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="17cf8dca-1490-4db8-8a39-43429e3ca465" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/django_bookstore/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/django_bookstore/db.sqlite3" afterDir="false" />
-    </list>
+    <list default="true" id="eaadd80b-aca6-4ac8-afb8-384fcc998b0d" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
-  <component name="ProjectId" id="1nKqWkcpVi6uNk5LXjNNKeHEEHa" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="1o4Zy4WSoh2c1gjytAHCOlVUFfc" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -27,11 +28,11 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="17cf8dca-1490-4db8-8a39-43429e3ca465" name="Default Changelist" comment="" />
-      <created>1611149166349</created>
+      <changelist id="eaadd80b-aca6-4ac8-afb8-384fcc998b0d" name="Default Changelist" comment="" />
+      <created>1612548075943</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1611149166349</updated>
+      <updated>1612548075943</updated>
     </task>
     <servers />
   </component>

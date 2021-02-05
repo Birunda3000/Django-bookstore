@@ -1,11 +1,21 @@
 from django.db import models
 from django.core.exceptions import ValidationError
+from django.contrib.auth.models import AbstractUser
 
 def validate_interval(value):
     if value < 0:
         raise ValidationError('Preço não poe ser menor que zero')
 
+def validate_interval_age(value):
+    if value < 16:
+        raise ValidationError('Apenas para maiores de 16 anos')
+
 # Create your models here.
+
+class User(AbstractUser):
+    age = models.IntegerField(null=True, blank=True, validators=[validate_interval_age])#maxdigits
+
+
 
 class Genero(models.Model):
     nome = models.CharField(max_length=50)

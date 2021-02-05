@@ -31,12 +31,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    #django apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # local apps
     'loja'
 ]
 
@@ -124,3 +126,6 @@ MEDIA_URL = '/media/'#***
 MEDIA_ROOT = 'media/'#talvez de erro adicionar /
 
 
+#User Model
+
+AUTH_USER_MODEL = "loja.User"
