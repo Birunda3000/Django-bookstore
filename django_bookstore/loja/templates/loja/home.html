@@ -16,7 +16,15 @@
     <img src="..\..\..\media\django.png">
     <h1 class="titulo">Bem vindo a <a class="link_titulo mask morpheus-den-gradient" href="{% url 'url_home'%}">Django BookStore</a></h1>
     </div>
+    
+    {% if user.is_authenticated %}
+    <li class="nav-item">
 
+        <a href="/admin">Acessar area administrativa</a>
+
+            <a class="nav-link" href="/accounts/logout">Sair</a>
+    </li>
+    {% endif %}
     
 <div>
     <h2 class="lancamentos">

@@ -1,6 +1,9 @@
 from django.shortcuts import render
 import datetime
 from .models import Genero, Editora, Livro
+
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 
 def home(request):
@@ -17,6 +20,7 @@ def book_page(request, pk):
     data['livro'] = livro
     return render(request,'loja/book_page.html',data)
 
+@login_required
 def compra(request, pk):
     data = {}
     livro = Livro.objects.get(pk=pk)

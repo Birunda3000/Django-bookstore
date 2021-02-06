@@ -15,8 +15,6 @@ def validate_interval_age(value):
 class User(AbstractUser):
     age = models.IntegerField(null=True, blank=True, validators=[validate_interval_age])#maxdigits
 
-
-
 class Genero(models.Model):
     nome = models.CharField(max_length=50)
     data_criação = models.DateTimeField(auto_now_add=True)
