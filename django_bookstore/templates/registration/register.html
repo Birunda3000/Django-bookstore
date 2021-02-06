@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" href = "..\..\..\media\favicon.ico"/>
-    <title>Django BookStore | Login</title>
+    <title>Django BookStore | Cadastro</title>
 </head>
 <body>
     
     <a href="{% url 'url_home'%}">Django BookStore</a>
     
     
-    <h1>Faça seu login porra</h1>
+    <h1>Faça seu cadastro porra</h1>
     <form method="POST">
         {% csrf_token %}
         <input type="hidden" name="next" value="{{ next }}">
 
         {{form}}
-        <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+        <button type="submit" class="btn btn-primary btn-block">Registrar</button>
     </form>
-    <a href="/accounts_create">Quer criar uma conta?</a>
+    <a href='/accounts/login'>Ja tem uma conta?</a>
 </body>
 </html>
