@@ -19,10 +19,11 @@
     
     {% if user.is_authenticated %}
     <li class="nav-item">
+        Seja bem vindo {{ user.get_username }} <br>
 
         <a href="/admin">Acessar area administrativa</a>
-
-            <a class="nav-link" href="/accounts/logout">Sair</a>
+        
+        <a class="nav-link" href="/accounts/logout">Sair</a>
     </li>
     {% endif %}
     

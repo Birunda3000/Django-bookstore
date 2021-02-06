@@ -20,9 +20,6 @@ class SignUp(generic.CreateView):
 def home(request):
     data = {}
     data['livros'] = Livro.objects.all()
-
-    #html = "<html><body>    meu primiero site dijango It is now %s.</body></html>" % now
-    #return HttpResponse(html)
     return render(request, 'loja/home.html', data)
 
 def book_page(request, pk):

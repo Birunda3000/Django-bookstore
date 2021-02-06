@@ -15,7 +15,7 @@
         {% csrf_token %}
         <input type="hidden" name="next" value="{{ next }}">
 
-        {{form}}
+        {{ form }}
         <button type="submit" class="btn btn-primary btn-block">Registrar</button>
     </form>
     <a href='/accounts/login'>Ja tem uma conta?</a>
