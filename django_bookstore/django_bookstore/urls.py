@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from loja.views import home, book_page, compra
+from loja.views import home, book_page, compra, user_page
 
 from loja import views
 
@@ -30,6 +30,8 @@ urlpatterns = [
     path("compra/<int:pk>/", compra, name='url_comprar'),
     path('accounts/', include('django.contrib.auth.urls')),
 
-    path('accounts_create/', views.SignUp.as_view(), name="signup" ),#ATENÇÃO
+    path('accounts_create/', views.SignUp.as_view(), name= 'signup' ),#ATENÇÃO
+
+    path('user_page/', user_page, name='url_user_page' )
 
 ] + static(settings.MEDIA_URL , document_root=settings.MEDIA_ROOT)   #depois do +

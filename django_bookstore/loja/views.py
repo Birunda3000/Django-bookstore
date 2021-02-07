@@ -34,3 +34,8 @@ def compra(request, pk):
     livro = Livro.objects.get(pk=pk)
     data['livro'] = livro
     return render(request,'loja/compra.html',data)
+
+@login_required
+def user_page(request):
+
+    return render(request,'loja/user_page.html')
