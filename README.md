@@ -1,6 +1,4 @@
-# Django-aps
- Testes com o django
- 
+# Django-aps 
  Login e senha do admin: admin
  
  Pagina inicial: /home
