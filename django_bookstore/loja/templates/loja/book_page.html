@@ -6,20 +6,70 @@
     <link rel="shortcut icon" href="..\..\..\media\favicon.ico"/>
     <title>{{livro.titulo}} | Django BookStore</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static './bulma.css' %}">
     <link rel="stylesheet" href="{% static './book_page.css' %}">
 </head>
 <body>
-    <a href="{% url 'url_home'%}"><h1 class="titulo">Django BookStore</h1></a>
-    
-    {% if user.is_authenticated %}
-    <li class="nav-item">
-        Seja bem vindo {{ user.get_username }} <br>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+  
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/home">
+          Home
+        </a>
+        {% if user.is_authenticated %}
+          {% if user.is_staff%}
+            <div>
+            </div>
+          {% else %}
+        <a class="navbar-item" href="/home">  <!--AJEITA A URL DO USER AQUI SAFADO -->
+          Area do usuário
+        </a>
+          {%endif%}
+        {% endif %}
+      </div>
+      {% if user.is_authenticated %}
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <div class="button is-white is-static">Seja bem vindo {{ user.get_username }}</div>
+            {% if user.is_staff %}
+            <a class="button is-danger" href="/admin">
+            <strong>Acessar area administrativa</strong>
+            </a>
+            {% endif %}
+          <a class="button is-danger" href="/accounts/logout">
+            <strong>Log out</strong>
+          </a>
+         </div>
+        </div>
+      </div>
+      {% else %}
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-danger" href="/accounts_create">
+              <strong>Cadastre-se</strong>
+            </a>
+            <a class="button is-light" href="/accounts/login/">
+              Log in
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      
+    </div>
+  </nav>
 
-        <a href="/admin">Acessar area administrativa</a>
-        
-        <a class="nav-link" href="/accounts/logout">Sair</a>
-    </li>
-    {% endif %}
+    <a href="{% url 'url_home'%}"><h1 class="titulo">Django BookStore</h1></a>
     
     <h2>
         {{livro.titulo}}
