@@ -21,18 +21,13 @@
   
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item" href="/home">
+        <a class="navbar-item" href="{% url 'url_home' %}">
           Home
         </a>
         {% if user.is_authenticated %}
-          {% if user.is_staff%}
-            <div>
-            </div>
-          {% else %}
-        <a class="navbar-item" href="/home">  <!--AJEITA A URL DO USER AQUI SAFADO -->
+        <a class="navbar-item" href="{% url 'url_user_page' %}">  <!--AJEITA A URL DO USER AQUI SAFADO -->
           Area do usuário
         </a>
-          {%endif%}
         {% endif %}
       </div>
       {% if user.is_authenticated %}

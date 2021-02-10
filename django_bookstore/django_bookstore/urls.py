@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from loja.views import home, book_page, compra, user_page
+from loja.views import home, book_page, compra, user_page, cart_home
 
 from loja import views
 
@@ -25,13 +25,15 @@ from django_bookstore import settings#***********
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='url_adm'),#NÃO CONSIGO ACESSAR PELO NOME, VEJA VIEW HOME
-    path('home/', home, name='url_home'),
+    path('', home, name='url_home'),
     path("book_page/<int:pk>/", book_page, name='url_book'),
     path("compra/<int:pk>/", compra, name='url_comprar'),
     path('accounts/', include('django.contrib.auth.urls')),
 
     path('accounts_create/', views.SignUp.as_view(), name= 'signup' ),#ATENÇÃO
 
-    path('user_page/', user_page, name='url_user_page' )
+    path('user_page/', user_page, name='url_user_page' ),
+
+    path('cart/', cart_home, name='url_cart')
 
 ] + static(settings.MEDIA_URL , document_root=settings.MEDIA_ROOT)   #depois do +

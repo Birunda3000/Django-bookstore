@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon"
+    href="..\..\..\media\favicon.ico"/>
+    <title>{{ user.get_username }} dashboard | Django BookStore</title>
+</head>
+<body>
+    <a href="{% url 'url_home'%}"><h1>Django BookStore</h1></a>
+    
+    <h1>Carrinho</h1>
+
+    {% for car in carrinho %}
+    <li>
+        
+        {{ car.products }}
+
+    </li>
+
+    {% endfor %}
+
+    <img src="..\..\..\media\em construção.jpg">
+</body>
+</html>

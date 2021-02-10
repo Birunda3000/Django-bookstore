@@ -25,19 +25,14 @@
       
         <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start">
-            <a class="navbar-item" href="/home">
+            <a class="navbar-item" href="{% url 'url_home' %}">
               Home
             </a>
       
             {% if user.is_authenticated %}
-              {% if user.is_staff%}
-                <div>
-                </div>
-              {% else %}
             <a class="navbar-item" href="{% url 'url_user_page' %}">  <!--AJEITA A URL DO USER AQUI SAFADO -->
               Area do usuário
             </a>
-              {%endif%}
             {% endif %}
           </div>
           {% if user.is_authenticated %}
@@ -79,6 +74,14 @@
     <h1 class="titulo">Bem vindo a <a class="link_titulo mask morpheus-den-gradient" href="{% url 'url_home'%}">Django BookStore</a></h1>
     </div>
     
+    <h1>{{ user.get_username }}</h1>
+    <h1>{{ user.get_ }}</h1>
+    <h1>{{ user.get_name }}</h1>
+    <a href="{% url 'url_cart' %}">Acessar Carrinho</a><!--AJEITA A URL DO USER AQUI SAFADO id do user autenticado-->
+
+
+
+
 <div>
     <h2 class="title is-3 lancamentos">
         Novos lançamentos
