@@ -131,6 +131,6 @@ MEDIA_ROOT = 'media/'#talvez de erro adicionar /
 
 AUTH_USER_MODEL = "loja.User"
 
-LOGIN_REDIRECT_URL = '/home'
+LOGIN_REDIRECT_URL = '/'
 
 LOGOUT_REDIRECT_URL = '/accounts/login'

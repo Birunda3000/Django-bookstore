@@ -1,6 +1,6 @@
 from django.shortcuts import render
 import datetime
-from .models import Genero, Editora, Livro, Cart
+from .models import Genero, Editora, Livro, Cart, Compra
 from django.contrib.auth.decorators import login_required
 
 #from django.contrib.auth.forms import UserCreationForm
@@ -28,22 +28,42 @@ def book_page(request, pk):
     data['livro'] = livro
     return render(request,'loja/book_page.html',data)
 
+
+
+
+
 @login_required
 def compra(request, pk):
+    compra = Compra()
+    compra.livro = Livro.objects.get(pk=pk)
+    compra.user = request.user
+    compra.save()
+    
     data = {}
-    livro = Livro.objects.get(pk=pk)
-    data['livro'] = livro
-    return render(request,'loja/compra.html',data)
+    data['livro'] = Livro.objects.get(pk=pk)
+    return render(request,'loja/compra.html', data)
+
+
+
+
+
+
+
+
+
+
+
 
 @login_required
 def user_page(request):
-
-    return render(request,'loja/user_page.html')
+    data = {}
+    data['livros'] = Livro.objects.all()# forma errada
+    data['compras'] = Compra.objects.filter(user=request.user).order_by('timestamp').reverse()
+    return render(request,'loja/user_page.html', data)
 
 @login_required
 def cart_home(request):
     return render(request, "loja/carts.html", {} )
-
 
 @login_required
 def cart_home(request):

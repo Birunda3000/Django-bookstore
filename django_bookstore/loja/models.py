@@ -102,3 +102,15 @@ class Cart(models.Model):
 
     def __str__(self):
         return str(self.id)
+
+#User = settings.AUTH_USER_MODEL
+class Compra(models.Model):    
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+
+    livro = models.ForeignKey(Livro, on_delete=models.CASCADE)
+    
+    
+    timestamp = models.DateTimeField(auto_now_add = True)
+
+    def __str__(self):
+        return str(self.id)
