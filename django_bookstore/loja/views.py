@@ -1,11 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import datetime
-from .models import Genero, Editora, Livro, Cart, Compra
+from .models import Genero, Editora, Livro, Compra#, Cart
 from django.contrib.auth.decorators import login_required
 
 #from django.contrib.auth.forms import UserCreationForm
 
-from .forms import UserCreationForm
+from .forms import UserCreationForm, UserChangeForm
 
 from django.urls import reverse_lazy
 from django.views import generic
@@ -28,10 +28,6 @@ def book_page(request, pk):
     data['livro'] = livro
     return render(request,'loja/book_page.html',data)
 
-
-
-
-
 @login_required
 def compra(request, pk):
     compra = Compra()
@@ -43,23 +39,36 @@ def compra(request, pk):
     data['livro'] = Livro.objects.get(pk=pk)
     return render(request,'loja/compra.html', data)
 
-
-
-
-
-
-
-
-
-
-
-
 @login_required
 def user_page(request):
     data = {}
     data['livros'] = Livro.objects.all()# forma errada
     data['compras'] = Compra.objects.filter(user=request.user).order_by('timestamp').reverse()
     return render(request,'loja/user_page.html', data)
+
+@login_required
+def edit_user(request):
+    form = UserChangeForm(request.POST or None, instance = request.user)
+    data = {}
+    data['form'] = form 
+    data['livros'] = Livro.objects.all()# forma errada
+    data['compras'] = Compra.objects.filter(user=request.user).order_by('timestamp').reverse()
+
+    if form.is_valid():
+        form.save()
+        return redirect('url_user_page')
+
+
+    return render(request,'loja/edit_user.html', data)
+
+
+
+
+
+
+
+
+
 
 @login_required
 def cart_home(request):

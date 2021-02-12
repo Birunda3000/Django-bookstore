@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from loja.views import home, book_page, compra, user_page, cart_home
+from loja.views import home, book_page, compra, user_page, cart_home, edit_user
 
 from loja import views
 
@@ -34,6 +34,8 @@ urlpatterns = [
 
     path('user_page/', user_page, name='url_user_page' ),
 
-    path('cart/', cart_home, name='url_cart')
+    path('cart/', cart_home, name='url_cart'),
+
+    path('edit_user/', edit_user, name='url_edit_user')
 
 ] + static(settings.MEDIA_URL , document_root=settings.MEDIA_ROOT)   #depois do +

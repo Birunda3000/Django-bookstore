@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon"
+    href="..\..\..\media\favicon.ico"/>
+    <title>{{ user.get_username }} dashboard | Django BookStore</title>
+</head>
+<body>
+    <a href="{% url 'url_home'%}"><h1>Django BookStore</h1></a>
+
+    <h1>Editar Perfil - {{ user.get_username }}</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ next }}">
+        {{form}}
+        <button type="submit" class="btn btn-primary btn-block">Salvar</button>
+    </form>
+
+
+</body>
+</html>

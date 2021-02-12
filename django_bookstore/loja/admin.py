@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth import admin as auth_admin
-from .models import Genero, Editora, Livro, User, Cart, Compra
+from .models import Genero, Editora, Livro, User, Compra#, Cart
 
 from .forms import UserChangeForm, UserCreationForm
 
@@ -8,7 +8,7 @@ from .forms import UserChangeForm, UserCreationForm
 admin.site.register(Genero)
 admin.site.register(Editora)
 admin.site.register(Livro)
-admin.site.register(Cart)
+#admin.site.register(Cart)
 admin.site.register(Compra)
 @admin.register(User)
 class UserAdmin(auth_admin.UserAdmin):

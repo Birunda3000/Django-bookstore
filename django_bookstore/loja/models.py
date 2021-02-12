@@ -90,7 +90,7 @@ class Livro(models.Model):
 
 
 #User = settings.AUTH_USER_MODEL
-class Cart(models.Model):    
+'''class Cart(models.Model):    
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
 
     products = models.ManyToManyField(Livro, blank = True)
@@ -101,7 +101,7 @@ class Cart(models.Model):
     #objects = CartManager()
 
     def __str__(self):
-        return str(self.id)
+        return str(self.id)'''
 
 #User = settings.AUTH_USER_MODEL
 class Compra(models.Model):    

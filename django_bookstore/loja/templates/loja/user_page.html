@@ -12,38 +12,41 @@
     
     <h2>Seja bem vindo {{ user.get_username }}</h2>
 
-    <h3>Em construção</h3>
     <br>
     <b>Username</b> - {{ user.username }}<br>
-    <b>Nome</b> - {{ user.get_first_name }}<br>
-    <b>Sobrenome</b> - {{ user.get_last_name }}<br>
-    <b>Idade</b> - {{ user.get_age }}<br>
+    <b>Nome</b> - {{ user.first_name }}<br>
+    <b>Sobrenome</b> - {{ user.last_name }}<br>
+    <b>E-mail</b> - {{ user.email }}<br>
+    <b>Idade</b> - {{ user.age }}<br>
+    <a href="{% url 'url_edit_user'%}">Editar</a>
     <br>
 
-    <h3>Compras</h3><br>
+    <h3>Suas compras</h3><br>
     {% for compra in compras %}
         {% for livro in livros %}
             {% if compra.livro_id == livro.id %}
                 <li>
-                
-                    {{ livro.titulo }}
+                {% if livro.image == "" and livro.image2 == "" and livro.image3 == ""%}
+                    <img class="img_box" src="..\..\..\media\no_pic.png">
+                {% endif %}
+        
+                {% if livro.image != "" %}
+                    <img class="img_box" src="{{ livro.image.url }}">
+                {% endif %}
+        
+                {% if livro.image2 != "" and livro.image == ""%}
+                    <img class="img_box" src="{{ livro.image2.url }}">
+                {% endif %}
+        
+                {% if livro.image3 != "" and livro.image == "" and livro.image2 == ""%}
+                    <img class="img_box" src="{{ livro.image3.url }}">
+                {% endif %}
 
+                {{ livro.titulo }}  -  R$ {{ livro.preço }}  -  {{ compra.timestamp }}
                 </li>
             {% endif %}
         {% endfor %}
     {% endfor %}
 
-
-
-
-
-
-
-
-
-
-
-
-    <img src="..\..\..\media\em construção.jpg">
 </body>
 </html>
