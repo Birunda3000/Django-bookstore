@@ -104,11 +104,23 @@ class Livro(models.Model):
         return str(self.id)'''
 
 #User = settings.AUTH_USER_MODEL
+
+class Forma_de_Pagamento(models.Model):    
+    nome = models.CharField(max_length=50)
+    data_criação = models.DateTimeField(auto_now_add=True)
+    descrição = models.TextField(null=True, blank=True)
+    class Meta:
+        verbose_name_plural = 'Formas de Pagamento'
+    #resolvendo o object no admim nome melhor
+    def __str__(self):
+        return self.nome
+
 class Compra(models.Model):    
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
 
     livro = models.ForeignKey(Livro, on_delete=models.CASCADE)
     
+    metodo_de_pagamento = models.ForeignKey(Forma_de_Pagamento, on_delete=models.CASCADE)
     
     timestamp = models.DateTimeField(auto_now_add = True)
 

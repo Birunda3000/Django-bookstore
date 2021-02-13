@@ -42,7 +42,7 @@
                     <img class="img_box" src="{{ livro.image3.url }}">
                 {% endif %}
 
-                {{ livro.titulo }}  -  R$ {{ livro.preço }}  -  {{ compra.timestamp }}
+                {{ livro.titulo }}  -  R$ {{ livro.preço }}  -  {{ compra.timestamp }} - {{compra.metodo_de_pagamento}}
                 </li>
             {% endif %}
         {% endfor %}

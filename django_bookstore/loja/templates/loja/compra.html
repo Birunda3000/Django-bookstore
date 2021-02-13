@@ -8,8 +8,12 @@
 </head>
 <body>
     <a href="{% url 'url_home'%}"><h1>Django BookStore</h1></a>
-    <h2>Comprar {{livro.titulo}}</h2>
-    <h3>Em construção</h3>
-    <img src="..\..\..\media\em construção.jpg">
+    <h2>Comprar {{ livro.titulo }}</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ next }}">
+        {{ form }}
+        <button type="submit" class="btn btn-primary btn-block">Comprar</button>
+    </form>
 </body>
 </html>
