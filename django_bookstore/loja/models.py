@@ -124,5 +124,8 @@ class Compra(models.Model):
     
     timestamp = models.DateTimeField(auto_now_add = True)
 
+    class Meta:
+        verbose_name_plural = 'Compras'
+
     def __str__(self):
         return 'pedido '+str(self.id)
