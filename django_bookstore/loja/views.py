@@ -6,9 +6,12 @@ from django.contrib.auth.decorators import login_required
 #from django.contrib.auth.forms import UserCreationForm
 
 from .forms import UserCreationForm, UserChangeForm, CompraForm
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
 
 from django.urls import reverse_lazy
 from django.views import generic
+from django.core.paginator import Paginator
 
 # Create your views here.
 
@@ -18,15 +21,31 @@ class SignUp(generic.CreateView):
     template_name = 'registration/register.html'
 
 def home(request):
-    data = {}
-    data['livros'] = Livro.objects.all()
-    return render(request, 'loja/home.html', data)
+    book_list = Livro.objects.all().order_by('-id')
+    paginator = Paginator(book_list, 3)
+    page = request.GET.get('page')
+    books = paginator.get_page(page)
+    return render(request, 'loja/home.html', {'books':books})
 
 def book_page(request, pk):
     data = {}
     livro = Livro.objects.get(pk=pk)
     data['livro'] = livro
     return render(request,'loja/book_page.html',data)
+
+def search_view(request):
+    dados = request.GET["dados"]
+    method = request.GET["method"]
+    data = {}
+
+    if method == "Titulo":
+        livro = Livro.objects.filter(titulo=dados)
+    elif method == "Autor":
+        livro = Livro.objects.filter(autor=dados)
+
+    data['livros'] = livro
+    return render(request, 'loja/search_view.html', data)
+
 
 @login_required
 def compra(request, pk):
@@ -56,8 +75,8 @@ def edit_user(request):
     form = UserChangeForm(request.POST or None, instance = request.user)
     data = {}
     data['form'] = form 
-    data['livros'] = Livro.objects.all()# forma errada
-    data['compras'] = Compra.objects.filter(user=request.user).order_by('timestamp').reverse()
+    """ data['livros'] = Livro.objects.all()# forma errada
+    data['compras'] = Compra.objects.filter(user=request.user).order_by('timestamp').reverse() """
     if form.is_valid():
         form.save()
         return redirect('url_user_page')
@@ -66,6 +85,18 @@ def edit_user(request):
 @login_required
 def cart_home(request):
     return render(request, "loja/carts.html", {} )
+
+@login_required
+def alterar_senha(request):
+    if request.method == "POST":
+        form_senha = PasswordChangeForm(request.user, request.POST)
+        if form_senha.is_valid():
+            user = form_senha.save()
+            update_session_auth_hash(request, user)
+            return redirect('url_user_page')
+    else:
+        form_senha = PasswordChangeForm(request.user)
+    return render(request, 'loja/alterar_senha.html', {'form_senha': form_senha})
 
 @login_required
 def cart_home(request):

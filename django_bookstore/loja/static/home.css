@@ -90,3 +90,14 @@ li{
   .margin {
       margin-right: 2rem;
   }
+  .paginacao{
+    display: block;
+    position: relative;
+    text-align: center;
+    margin-top: -17rem;
+    margin-left: 37rem;
+  }
+  .search{
+      background-color: white;
+      padding-bottom: 15px;
+  }

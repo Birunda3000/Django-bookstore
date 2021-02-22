@@ -79,32 +79,12 @@
 <div>
   <div>
     <h2 class="title is-3 lancamentos">
-        Novos lançamentos
+        Resultados da pesquisa
     </h2>
-
-   <form action="{% url 'url_search_page' %}" method="GET">
-    <div class="field has-addons has-addons-right search">
-      <p class="control">
-        <span class="select">
-           <select name="method">
-            <option>Titulo</option>
-            <option>Autor</option>
-          </select>
-        </span>
-      </p>
-      <p class="control" name="teste">
-        <input name="dados" class="input" type="text" placeholder="digite aqui">
-      </p>
-        <button class="button is-primary" type="submit">
-          search
-        </button>
-    </div>
-  </form>
-
   </div>
     
     <ul class="areatop">
-    {% for livro in books %}
+    {% for livro in livros %}
     <li class="caixatop">
         {% if livro.image == "" and livro.image2 == "" and livro.image3 == ""%}
             <img class="img_box" src="..\..\..\media\no_pic.png">
@@ -128,22 +108,7 @@
         <br> R$ {{ livro.preço }}
     </li>
     {% endfor %}
-      <div class="pagination">
-        <span class="step-links">
-           {% if books.has_previous %}
-               <a href="?page={{ books.previous_page_number }}">Anterior</a>
-           {% endif %}
-            <span class="current">
-                {{ books.number }} de {{ books.paginator.num_pages }}
-           </span>
-            {% if books.has_next %}
-               <a href="?page={{ books.next_page_number }}">Próxima</a>
-           {% endif %}
-       </span>
-    </div>
     </ul>
 </div>
-
-<script src="{% static './searchFunc.js' %}"></script>
 </body>
 </html>
