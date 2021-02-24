@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from loja.views import home, book_page, compra, user_page, cart_home, edit_user, search_view, alterar_senha
+from loja.views import home, book_page, compra, user_page, cart_home, edit_user, search_view, alterar_senha, relatorio
 
 from loja import views
 
@@ -41,5 +41,7 @@ urlpatterns = [
     path('search/', search_view, name='url_search_page'),
 
     path('alterar_senha/', alterar_senha, name='alterar_senha'),
+
+    path('relatorio/', relatorio, name='url_relatorio'),
 
 ] + static(settings.MEDIA_URL , document_root=settings.MEDIA_ROOT)   #depois do +

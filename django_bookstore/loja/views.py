@@ -37,21 +37,26 @@ def search_view(request):
     dados = request.GET["dados"]
     method = request.GET["method"]
     data = {}
-
     if method == "Titulo":
         livro = Livro.objects.filter(titulo=dados)
     elif method == "Autor":
         livro = Livro.objects.filter(autor=dados)
-
+    elif method == "Genero":
+        p = Genero.objects.get(nome=dados)
+        livro = Livro.objects.filter(genero=p.pk)
+    elif method == "Editora":
+        p = Editora.objects.get(nome=dados)
+        livro = Livro.objects.filter(editora=p.pk)
     data['livros'] = livro
     return render(request, 'loja/search_view.html', data)
-
 
 @login_required
 def compra(request, pk):
     compra = Compra()
     compra.livro = Livro.objects.get(pk=pk)
+    k = Livro.objects.get(pk=pk)
     compra.user = request.user
+    compra.valor = k.preço
 
     form = CompraForm(request.POST or None, instance = compra)
     data = {}
@@ -97,6 +102,27 @@ def alterar_senha(request):
     else:
         form_senha = PasswordChangeForm(request.user)
     return render(request, 'loja/alterar_senha.html', {'form_senha': form_senha})
+
+
+@login_required
+def relatorio(request):
+    data = {}
+    data['Compras'] = Compra.objects.filter(timestamp2 = datetime.date.today())#'2021-02-23')# forma errada
+    data['Livros'] = Livro.objects.all()
+    p = Compra.objects.filter(timestamp2 = datetime.date.today())
+    x = 0
+    for compra in p:
+        x = x + compra.valor
+    data['soma'] = x
+    return render(request,'loja/relatorio.html', data)
+
+
+
+
+
+
+
+
 
 @login_required
 def cart_home(request):

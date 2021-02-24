@@ -7,7 +7,7 @@ from .models import User, Compra
 class UserChangeForm(forms.UserChangeForm):
     class Meta(forms.UserChangeForm.Meta):
         model = User
-        fields = UserCreationForm.Meta.fields + ('age','first_name',)
+        fields = UserCreationForm.Meta.fields + ('age','first_name','last_name','email')
 
 class UserCreationForm(forms.UserCreationForm):
     class Meta(forms.UserCreationForm.Meta):

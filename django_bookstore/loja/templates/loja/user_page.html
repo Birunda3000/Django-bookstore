@@ -18,7 +18,7 @@
     <b>Sobrenome</b> - {{ user.last_name }}<br>
     <b>E-mail</b> - {{ user.email }}<br>
     <b>Idade</b> - {{ user.age }}<br>
-    <a href="{% url 'url_edit_user'%}">Editar</a>
+    <a href="{% url 'url_edit_user'%}">Editar Informações</a>
     <br>
 
     <a href="{% url 'alterar_senha'%}">Alterar senha</a>
@@ -45,6 +45,7 @@
                 {% endif %}
 
                 {{ livro.titulo }}  -  R$ {{ livro.preço }}  -  {{ compra.timestamp }} - {{compra.metodo_de_pagamento}}
+                <h1>{{ compra.estado_da_compra }}</h1>
                 </li>
             {% endif %}
         {% endfor %}
