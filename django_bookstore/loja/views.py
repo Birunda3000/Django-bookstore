@@ -58,28 +58,29 @@ def compra(request, pk):
     compra.livro = Livro.objects.get(pk=pk)
     k = Livro.objects.get(pk=pk)
     compra.user = request.user
-    compra.valor = k.preço
+    compra.valor = float(k.preço) #----------------------------
 
-    '''   nome = Forma_de_Pagamento.objects.get(pk=form['metodo_de_pagamento'])
-
-
-    qualquer = form['metodo_de_pagamento'].value
-
-    print(qualquer)
-
-    if qualquer == 1 or qualquer == 'Boleto' or qualquer == '1' or qualquer == int(1) or nome.nome == 'Boleto':
-        compra.valor = float(k.preço)*0.9
-
-    else:
-        compra.valor = float(k.preço)*0.9''' 
-    
     form = CompraForm(request.POST or None, instance = compra)
     data = {}
     data['form'] = form 
     data['livro'] = Livro.objects.get(pk=pk)
-    
+
     if form.is_valid():
         form.save()
+        #------------------------------------------------------------
+        compraPk  = form.instance.id
+        
+        jj = Compra.objects.get(pk=compraPk)
+
+        if jj.metodo_de_pagamento == 'Boleto' :
+            jj.valor = float(k.preço)*0.9
+
+        else:
+            jj.valor = float(k.preço)
+
+        form2 = CompraForm(request.POST or None, instance = jj)
+        form2.save()
+        #----------------------------------------------------------------
         return redirect('url_user_page')
     return render(request,'loja/compra.html', data)
 

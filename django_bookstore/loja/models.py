@@ -128,16 +128,14 @@ class Compra(models.Model):
     
     metodo_de_pagamento = models.ForeignKey(Forma_de_Pagamento, on_delete=models.CASCADE)
 
+    METODO_DE_PAGAMENTO = (
+        ('Boleto', 'Boleto'),
+        ('Cartão', 'Cartão'),
+    )
 
+    metodo_de_pagamento = models.CharField(max_length=10, choices=METODO_DE_PAGAMENTO)
 
-
-
-
-    metodo_de_pagamento = models.ForeignKey(Forma_de_Pagamento, on_delete=models.CASCADE)
-
-
-
-
+    #metodo_de_pagamento = models.ForeignKey(Forma_de_Pagamento, on_delete=models.CASCADE)
 
     timestamp = models.DateTimeField(auto_now_add = True)
 
