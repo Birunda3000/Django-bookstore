@@ -9,7 +9,7 @@
     
     <a href="{% url 'url_home'%}">Django BookStore</a>
     
-    <h1>Faça seu cadastro porra</h1>
+    <h1>Faça seu cadastro</h1>
     <form method="POST">
         {% csrf_token %}
         <input type="hidden" name="next" value="{{ next }}">

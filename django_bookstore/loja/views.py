@@ -5,7 +5,9 @@ from django.contrib.auth.decorators import login_required
 
 #from django.contrib.auth.forms import UserCreationForm
 
-from .forms import UserCreationForm, UserChangeForm, CompraForm
+from decimal import *
+
+from .forms import UserCreationForm, UserChangeForm, CompraForm, AvaliacaoForm
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 
@@ -21,8 +23,8 @@ class SignUp(generic.CreateView):
     template_name = 'registration/register.html'
 
 def home(request):
-    book_list = Livro.objects.all().order_by('-id')
-    paginator = Paginator(book_list, 3)
+    book_list = Livro.objects.all().order_by('genero')
+    paginator = Paginator(book_list, 6)
     page = request.GET.get('page')
     books = paginator.get_page(page)
     return render(request, 'loja/home.html', {'books':books})
@@ -58,6 +60,19 @@ def compra(request, pk):
     compra.user = request.user
     compra.valor = k.preço
 
+    '''   nome = Forma_de_Pagamento.objects.get(pk=form['metodo_de_pagamento'])
+
+
+    qualquer = form['metodo_de_pagamento'].value
+
+    print(qualquer)
+
+    if qualquer == 1 or qualquer == 'Boleto' or qualquer == '1' or qualquer == int(1) or nome.nome == 'Boleto':
+        compra.valor = float(k.preço)*0.9
+
+    else:
+        compra.valor = float(k.preço)*0.9''' 
+    
     form = CompraForm(request.POST or None, instance = compra)
     data = {}
     data['form'] = form 
@@ -67,6 +82,11 @@ def compra(request, pk):
         form.save()
         return redirect('url_user_page')
     return render(request,'loja/compra.html', data)
+
+    
+
+
+
 
 @login_required
 def user_page(request):
@@ -106,10 +126,15 @@ def alterar_senha(request):
 
 @login_required
 def relatorio(request):
+    date = request.GET["date"]
     data = {}
-    data['Compras'] = Compra.objects.filter(timestamp2 = datetime.date.today())#'2021-02-23')# forma errada
+    
+    data['Compras'] = Compra.objects.filter(timestamp2 = date)#'2021-02-23')
     data['Livros'] = Livro.objects.all()
-    p = Compra.objects.filter(timestamp2 = datetime.date.today())
+
+
+
+    p = Compra.objects.filter(timestamp2 = date)
     x = 0
     for compra in p:
         x = x + compra.valor
@@ -117,7 +142,39 @@ def relatorio(request):
     return render(request,'loja/relatorio.html', data)
 
 
+@login_required
+def avaliar(request, pk):
+    nota1 = request.GET["nota"]
+    pkCompra = request.GET["pkCompra"]
+    
+    nota = float(nota1)
+    
+    livro = Livro.objects.get(pk=pk)
 
+    compra = Compra.objects.get(pk=pkCompra)
+    compra.avaliado = True
+    compra.save()
+    #form = AvaliacaoForm(request.POST or None, instance = livro)
+    
+    nota_atual = livro.nota
+    avaliacoes_atuais = livro.numero_de_avaliacoes
+    pontos = nota_atual*avaliacoes_atuais
+    
+    pontos_novos = pontos + nota
+    
+    avaliacoes_atuais = avaliacoes_atuais + float(1)
+    
+    nota_atual = pontos_novos / avaliacoes_atuais
+    
+    livro.nota = nota_atual
+    livro.numero_de_avaliacoes = avaliacoes_atuais
+    livro.save()
+
+    
+    #form.nota = nota_atual
+    #form.numero_de_avaliacoes = avaliacoes_atuais
+    #form.save()
+    return redirect('url_user_page')
 
 
 

@@ -29,7 +29,7 @@
             </a>
       
             {% if user.is_authenticated %}
-            <a class="navbar-item" href="{% url 'url_user_page' %}">  <!--AJEITA A URL DO USER AQUI SAFADO -->
+            <a class="navbar-item" href="{% url 'url_user_page' %}">
               Area do usuário
             </a>
             {% endif %}
@@ -43,6 +43,19 @@
                 <a class="button is-danger" href="/admin">
                 <strong>Acessar area administrativa</strong>
                 </a>
+
+                <form action="{% url 'url_relatorio' %}" method="GET">
+                  <div class="field has-addons has-addons-right search">
+                    <p class="control" name="teste">
+                      <input name="date" class="input" type="text" placeholder="YYYY-MM-DD">
+                    </p>
+                      <button class="button is-primary" type="submit">
+                        solicitar relatorio
+                      </button>
+                  </div>
+                </form>
+
+
                 {% endif %}
               <a class="button is-danger" href="/accounts/logout">
                 <strong>Log out</strong>
@@ -72,8 +85,6 @@
     <img src="..\..\..\media\django.png">
     <h1 class="titulo">Bem vindo a <a class="link_titulo mask morpheus-den-gradient" href="{% url 'url_home'%}">Django BookStore</a></h1>
     </div>
-
-    <a href="{% url 'url_relatorio' %}">Solicitar relatorio</a>
 
 
 <div>

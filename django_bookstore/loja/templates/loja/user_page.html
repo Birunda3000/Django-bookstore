@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <link rel="shortcut icon"
     href="..\..\..\media\favicon.ico"/>
+
+    <link rel="stylesheet" href="{% static './bulma.css' %}">
+
     <title>{{ user.get_username }} dashboard | Django BookStore</title>
 </head>
 <body>
@@ -44,8 +48,38 @@
                     <img class="img_box" src="{{ livro.image3.url }}">
                 {% endif %}
 
-                {{ livro.titulo }}  -  R$ {{ livro.preço }}  -  {{ compra.timestamp }} - {{compra.metodo_de_pagamento}}
-                <h1>{{ compra.estado_da_compra }}</h1>
+                {{ livro.titulo }}  -  R$ {{ compra.valor }}  -  {{ compra.timestamp }} - {{compra.metodo_de_pagamento}} <br>
+                <h1>Nota (0 a 5) - {{ livro.nota }}</h1> 
+                <br>
+
+                
+                {% if compra.avaliado == False %}
+                <form action="{% url 'url_avaliar' livro.id %}"method="GET">
+                    <div class="field has-addons has-addons-right search">
+                      
+                    <input class="input" name="pkCompra" value={{compra.id}} readonly></input>
+                    
+                    <p class="control">
+                        <span class="select">
+                           <select name="nota">
+                            <option value = 1>1</option>
+                            <option value = 2>2</option>
+                            <option value = 3>3</option>
+                            <option value = 4>4</option>
+                            <option value = 5>5</option>
+                          </select>
+                        </span>
+                      </p>
+                        <button class="button is-primary" type="submit">
+                          Avaliar
+                        </button>
+                    </div>
+                  </form>
+
+                {% endif %}
+
+
+                <h1>Status - {{ compra.estado_da_compra }}</h1>
                 </li>
             {% endif %}
         {% endfor %}

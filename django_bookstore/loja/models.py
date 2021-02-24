@@ -15,6 +15,9 @@ def validate_interval_age(value):
 def validate_interval_quantidade(value):
     if value < 0:
         raise ValidationError('quantidade negativa')
+def validate_interval_nota(value):
+    if value < 0 or value > 5:
+        raise ValidationError('A nota deve ser maior que zero e menor ou igual a 5')
 
 # Create your models here.
 
@@ -54,7 +57,8 @@ class Livro(models.Model):
     image2 = models.FileField(upload_to='products/', null=True, blank=True)
     image3 = models.FileField(upload_to='products/', null=True, blank=True)
 
-    
+    nota = models.FloatField(validators=[validate_interval_nota], default =0.0)
+    numero_de_avaliacoes = models.FloatField(default = 0)
 
     class Meta:
         verbose_name_plural = 'Livros'
@@ -123,12 +127,23 @@ class Compra(models.Model):
     livro = models.ForeignKey(Livro, on_delete=models.CASCADE)
     
     metodo_de_pagamento = models.ForeignKey(Forma_de_Pagamento, on_delete=models.CASCADE)
-    
+
+
+
+
+
+
+    metodo_de_pagamento = models.ForeignKey(Forma_de_Pagamento, on_delete=models.CASCADE)
+
+
+
+
+
     timestamp = models.DateTimeField(auto_now_add = True)
 
     timestamp2 = models.DateField(auto_now_add = True)
 
-    valor = models.DecimalField(decimal_places=2, max_digits=9)
+    valor = models.FloatField(default =0.0)
 
     ESTADOS = (
         ('Pendente', 'Pendente'),
@@ -138,6 +153,8 @@ class Compra(models.Model):
     )
 
     estado_da_compra = models.CharField(max_length=10, choices=ESTADOS, default='Pendente')
+
+    avaliado = models.BooleanField(default = False)
 
     class Meta:
         verbose_name_plural = 'Compras'
