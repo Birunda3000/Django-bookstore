@@ -5,3 +5,5 @@
  Pagina inicial: /home
 
 Esse é a implementação em django de um site de uma livraria e ficou parecendo um site da deep web (completamente intecional)
+
+Para rodar o projeto: https://data-flair.training/blogs/create-django-project/
